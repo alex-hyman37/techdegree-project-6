@@ -48,22 +48,15 @@ addPhraseToDisplay(phraseArray);
 
 //check if a letter is in the phrase
 const checkLetter = button => {
-  li = document.querySelectorAll('li');
-  letter = document.getElementsByClassName('letter');
-
+  let li = document.querySelectorAll('li.letter');
   let match = null;
-  if (letter) {
-    for (let i = 0; i < li.length; i++) {
-      if (button.textContent === li.textContent) {
-        li.className = 'show';
-        button.textContent = match;
-        return match;
-      } else {
-        return null;
-      }
+  for (let i = 0; i < li.length; i++) {
+    if (button.textContent === li[i].textContent.toLowerCase()) {
+      li[i].classList.add('show');
+      match = button.textContent;
     }
   }
-
+  return match;
 }
 //----------------------------------------------------------------//
 //----------------------------------------------------------------//
@@ -100,8 +93,8 @@ qwerty.addEventListener('click', e => {
             //remove one of the heart images
             //increment the 'missed' counter
       const heart = document.getElementsByClassName('tries');
-      heart.remove();
-      missed++;
+      // heart.remove();
+      // missed++;
     }
 });
 
