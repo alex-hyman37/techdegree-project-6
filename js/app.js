@@ -21,6 +21,7 @@ const getRandomPhraseAsArray = arr => {
 }
 getRandomPhraseAsArray(phrases);
 //----------------------------------------------------------------//
+//----------------------------------------------------------------//
 
 //adds the letters of a string to the display
 const addPhraseToDisplay = (arr) => {
@@ -43,6 +44,7 @@ const addPhraseToDisplay = (arr) => {
 const phraseArray = getRandomPhraseAsArray(phrases);
 addPhraseToDisplay(phraseArray); 
 //----------------------------------------------------------------//
+//----------------------------------------------------------------//
 
 //check if a letter is in the phrase
 const checkLetter = button => {
@@ -64,11 +66,13 @@ const checkLetter = button => {
 
 }
 //----------------------------------------------------------------//
+//----------------------------------------------------------------//
 
 //check if the game has been won or lost
 const checkWin = () => {
 
 }
+//----------------------------------------------------------------//
 //----------------------------------------------------------------//
 
 //listens for the start game button to be pressed
@@ -76,6 +80,7 @@ btnReset.addEventListener('click', () => {
   const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
 });
+//----------------------------------------------------------------//
 //----------------------------------------------------------------//
 
 //listens for the onscreen keyboard to be clicked
