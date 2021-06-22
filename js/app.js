@@ -1,0 +1,105 @@
+const qwerty = document.getElementById('qwerty');
+const phrase = document.getElementById('phrase');
+const btnReset = document.querySelector('.btn__reset');
+
+const missed = 0;
+const phrases = [
+  'Hello world',
+  'Javascript is fun',
+  'Treehouse is the best',
+  'Technology rules',
+  'Planet Earth'
+];
+
+
+
+//return a random phrase from an array
+const getRandomPhraseAsArray = arr => {
+  let randNumb = arr[Math.floor(Math.random() * arr.length)];
+  randNumb.split();
+  return randNumb;
+}
+getRandomPhraseAsArray(phrases);
+//----------------------------------------------------------------//
+
+//adds the letters of a string to the display
+const addPhraseToDisplay = (arr) => {
+  const ul = document.getElementById('phrase').firstElementChild;
+
+  for(let i = 0; i < arr.length; i++) {
+    const li = document.createElement('li');
+    const character = arr[i];
+    li.textContent = character;
+
+    // if character has a letter and no space
+    if(character !== ' ') {
+      li.className = 'letter'
+    } else {
+      li.className = 'space';
+    }
+    ul.appendChild(li);
+  }
+}
+const phraseArray = getRandomPhraseAsArray(phrases);
+addPhraseToDisplay(phraseArray); 
+//----------------------------------------------------------------//
+
+//check if a letter is in the phrase
+const checkLetter = button => {
+  li = document.querySelectorAll('li');
+  letter = document.getElementsByClassName('letter');
+
+  let match = null;
+  if (letter) {
+    for (let i = 0; i < li.length; i++) {
+      if (button.textContent === li.textContent) {
+        li.className = 'show';
+        button.textContent = match;
+        return match;
+      } else {
+        return null;
+      }
+    }
+  }
+
+}
+//----------------------------------------------------------------//
+
+//check if the game has been won or lost
+const checkWin = () => {
+
+}
+//----------------------------------------------------------------//
+
+//listens for the start game button to be pressed
+btnReset.addEventListener('click', () => {
+  const overlay = document.getElementById('overlay');
+  overlay.style.display = 'none';
+});
+//----------------------------------------------------------------//
+
+//listens for the onscreen keyboard to be clicked
+qwerty.addEventListener('click', e => {
+  //if e.target is not on qwerty
+  btn = document.getElementsByTagName('button');
+  if (e.target.btn !== 'BUTTON' || btn.className !== 'chosen') {
+    //add chosen class to the button that was pressed
+    //call checkLetter and store results in a variable
+    const button = e.target;
+    button.className = 'chosen';
+    const letterFound = checkLetter(button);
+    
+    
+    } else {
+      //if checkLetter does not find a letter
+            //remove one of the heart images
+            //increment the 'missed' counter
+      const heart = document.getElementsByClassName('tries');
+      heart.remove();
+      missed++;
+    }
+});
+
+
+
+
