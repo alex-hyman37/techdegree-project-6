@@ -86,13 +86,13 @@ btnReset.addEventListener('click', () => {
 //listens for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', e => {
   //if e.target is not on qwerty
-  btn = document.getElementsByTagName('button');
-  if (e.target.btn !== 'BUTTON' || btn.className !== 'chosen') {
+  if (e.target.tagName === 'BUTTON' && e.target.className !== 'chosen') {
     //add chosen class to the button that was pressed
     //call checkLetter and store results in a variable
     const button = e.target;
     button.className = 'chosen';
-    const letterFound = checkLetter(button);
+    button.disabled;
+    var letterFound = checkLetter(button);
     
     
     } else {
