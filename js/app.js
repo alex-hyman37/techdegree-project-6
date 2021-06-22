@@ -1,8 +1,10 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 const btnReset = document.querySelector('.btn__reset');
+const ul = document.getElementById('phrase').firstElementChild;
+const overlay = document.getElementById('overlay');
+let missed = 0;
 
-const missed = 0;
 const phrases = [
   'Hello world',
   'Javascript is fun',
@@ -25,8 +27,6 @@ getRandomPhraseAsArray(phrases);
 
 //adds the letters of a string to the display
 const addPhraseToDisplay = (arr) => {
-  const ul = document.getElementById('phrase').firstElementChild;
-
   for(let i = 0; i < arr.length; i++) {
     const li = document.createElement('li');
     const character = arr[i];
@@ -63,14 +63,31 @@ const checkLetter = button => {
 
 //check if the game has been won or lost
 const checkWin = () => {
+  let letter = document.querySelectorAll('.letter');
+  let show = document.querySelectorAll('.show');
+  let title = document.querySelector('.title');
 
+  if (letter.length === show.length) {
+    overlay.className = 'win';
+    overlay.querySelector('.title').textContent = 'You Win!';
+    overlay.style.display = 'flex';
+  } else if (missed >= 5) {
+    overlay.className = 'lose';
+    overlay.querySelector('.title').textContent = 'Sorry, you lose';
+    overlay.style.display = 'flex';
+  }
+  // reset();
 }
 //----------------------------------------------------------------//
 //----------------------------------------------------------------//
 
+//Reset function
+const reset = () => {
+  
+}
+
 //listens for the start game button to be pressed
 btnReset.addEventListener('click', () => {
-  const overlay = document.getElementById('overlay');
   overlay.style.display = 'none';
 });
 //----------------------------------------------------------------//
@@ -78,24 +95,19 @@ btnReset.addEventListener('click', () => {
 
 //listens for the onscreen keyboard to be clicked
 qwerty.addEventListener('click', e => {
-  //if e.target is not on qwerty
   if (e.target.tagName === 'BUTTON' && e.target.className !== 'chosen') {
-    //add chosen class to the button that was pressed
-    //call checkLetter and store results in a variable
     const button = e.target;
     button.className = 'chosen';
     button.disabled;
     var letterFound = checkLetter(button);
     
-    
-    } else {
-      //if checkLetter does not find a letter
-            //remove one of the heart images
-            //increment the 'missed' counter
-      const heart = document.getElementsByClassName('tries');
-      // heart.remove();
-      // missed++;
+      if(letterFound === null) {
+      const tries = document.getElementsByClassName('tries');
+      tries[missed].innerHTML = '<img src="images/lostHeart.png>';
+      missed++;
     }
+    checkWin();
+  }
 });
 
 
