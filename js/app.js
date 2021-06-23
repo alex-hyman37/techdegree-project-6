@@ -76,14 +76,17 @@ const checkWin = () => {
     overlay.querySelector('.title').textContent = 'Sorry, you lose';
     overlay.style.display = 'flex';
   }
-  // reset();
+  reset();
 }
 //----------------------------------------------------------------//
 //----------------------------------------------------------------//
 
 //Reset function
 const reset = () => {
-  
+  btnReset.textContent = 'Play again';
+  btnReset.addEventListener('click', () => {
+    location.reload(false);
+  });
 }
 
 //listens for the start game button to be pressed
