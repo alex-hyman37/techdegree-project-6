@@ -85,7 +85,7 @@ const checkWin = () => {
 const reset = () => {
   btnReset.textContent = 'Play again';
   btnReset.addEventListener('click', () => {
-    location.reload(false);
+    location.reload();
   });
 }
 
